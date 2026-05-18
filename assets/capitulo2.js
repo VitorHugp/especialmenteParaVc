@@ -58,11 +58,21 @@ const observer = new IntersectionObserver((entries) => {
 
 elements.forEach(el => observer.observe(el));
 
+/* AUDIO */
+const audioPlayer = document.getElementById("audioPlayer");
+
 function abrirModal(id){
     document.getElementById("overlay").classList.add("show");
     const modal = document.getElementById(id);
     modal.style.display = "block";
     setTimeout(() => modal.classList.add("show"), 10);
+
+    const card = document.querySelector(`[onclick="abrirModal('${id}')"]`);
+    const audioSrc = card.dataset.audio;
+    if(audioSrc){
+        audioPlayer.src = audioSrc;
+        audioPlayer.play();
+    }
 }
 
 function fecharModal(){
@@ -71,4 +81,6 @@ function fecharModal(){
         m.classList.remove("show");
         setTimeout(() => m.style.display = "none", 400);
     });
+    audioPlayer.pause();
+    audioPlayer.src = "";
 }

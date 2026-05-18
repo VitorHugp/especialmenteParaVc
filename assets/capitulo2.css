@@ -65,6 +65,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-end;
     gap: 50px;
 }
 
@@ -77,10 +78,11 @@ body{
     align-items: center;
     gap: 20px;
     width: 200px;
-
+    cursor: pointer;
     opacity: 0;
     transform: translateY(40px);
     transition: 0.9s ease;
+    position: relative;
 }
 
 .disco-card.show{
@@ -93,12 +95,50 @@ body{
     transform: translateY(40px);
 }
 
+/* DESTAQUE */
+.disco-card.destaque{
+    transform: translateY(-30px);
+}
+
+.disco-card.destaque.show{
+    transform: translateY(-30px);
+}
+
+.disco-card.destaque .disco{
+    width: 210px;
+    height: 210px;
+    border-color: #4a9eff;
+    box-shadow:
+        0 0 30px rgba(0,80,200,0.6),
+        0 0 60px rgba(0,80,200,0.2),
+        inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.disco-card.destaque:hover .disco{
+    box-shadow:
+        0 0 50px rgba(74,158,255,0.8),
+        0 0 80px rgba(0,80,200,0.4);
+}
+
+/* BADGE */
+.badge{
+    background: linear-gradient(135deg, #003580, #0050c8);
+    color: #fff;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #4a9eff;
+    box-shadow: 0 0 10px rgba(74,158,255,0.4);
+    margin-bottom: -10px;
+    font-style: italic;
+}
+
 /* DISCO */
 .disco{
     width: 160px;
     height: 160px;
     border-radius: 50%;
-
     background: repeating-radial-gradient(
         circle at center,
         #0a0a1a 0px,
@@ -106,26 +146,45 @@ body{
         #080818 8px,
         #0d1030 12px
     );
-
     border: 2px solid #003580;
     box-shadow:
-        0 0 20px rgba(0, 80, 200, 0.3),
-        inset 0 0 20px rgba(0, 0, 0, 0.5);
-
+        0 0 20px rgba(0,80,200,0.3),
+        inset 0 0 20px rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-
     transition: 0.4s ease;
     animation: girar 8s linear infinite paused;
+    position: relative;
+}
+
+.disco::after{
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: conic-gradient(#4a9eff, transparent, #0050c8, transparent, #4a9eff) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: girar 3s linear infinite paused;
 }
 
 .disco-card:hover .disco{
     animation-play-state: running;
     box-shadow:
-        0 0 35px rgba(0, 80, 200, 0.6),
-        inset 0 0 20px rgba(0, 0, 0, 0.5);
+        0 0 35px rgba(0,80,200,0.6),
+        0 0 60px rgba(0,80,200,0.2),
+        inset 0 0 20px rgba(0,0,0,0.5);
     border-color: #4a9eff;
+}
+
+.disco-card:hover .disco::after{
+    opacity: 1;
+    animation-play-state: running;
 }
 
 /* CENTRO DO DISCO */
@@ -136,6 +195,7 @@ body{
     background: radial-gradient(circle, #1a2a4a, #0a0a1a);
     border: 2px solid #003580;
     box-shadow: 0 0 8px #0050c8;
+    z-index: 1;
 }
 
 /* INFO */
@@ -191,18 +251,14 @@ body{
     left: 50%;
     transform: translate(-50%, -50%) scale(0.8);
     z-index: 101;
-
     width: 340px;
     padding: 40px 30px;
-
     background: linear-gradient(160deg, #000a1a, #000510);
     border: 1px solid #003580;
     border-radius: 16px;
-
     box-shadow:
         0 0 40px rgba(0,80,200,0.4),
         inset 0 0 30px rgba(0,0,0,0.5);
-
     text-align: center;
     opacity: 0;
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -239,7 +295,6 @@ body{
     height: 100px;
     border-radius: 50%;
     margin: 0 auto 24px;
-
     background: repeating-radial-gradient(
         circle at center,
         #0a0a1a 0px,
@@ -247,14 +302,11 @@ body{
         #080818 8px,
         #0d1030 12px
     );
-
     border: 2px solid #003580;
     box-shadow: 0 0 20px rgba(0,80,200,0.4);
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     animation: girar 4s linear infinite;
 }
 
@@ -375,4 +427,49 @@ body{
 @keyframes pulsar{
     0%,100% { opacity: 1; }
     50% { opacity: 0.3; }
+}
+
+@media (max-width: 768px){
+    .titulo{ font-size: 2.5rem; }
+    .subtitulo{ font-size: 1rem; }
+
+    .discos-grid{
+        gap: 30px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .disco-card.destaque{
+        transform: translateY(0);
+        order: -1;
+    }
+
+    .disco-card.destaque.show{
+        transform: translateY(0);
+    }
+
+    .disco-card.destaque .disco{
+        width: 180px;
+        height: 180px;
+    }
+
+    .disco{ width: 130px; height: 130px; }
+
+    .modal{
+        width: 75vw !important;
+        padding: 30px 20px !important;
+    }
+
+    .modal-disco{ width: 80px; height: 80px; }
+
+    .citacao-section{ padding: 20px 20px 40px; }
+    .citacao{ font-size: 1rem; }
+
+    .player{ width: 90%; box-sizing: border-box; }
+}
+
+@media (max-width: 480px){
+    .titulo{ font-size: 1.8rem; }
+    .disco{ width: 110px; height: 110px; }
+    .disco-card.destaque .disco{ width: 150px; height: 150px; }
 }

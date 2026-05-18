@@ -1,7 +1,8 @@
 function verificar(){
     let senha = document.getElementById("senha").value;
+    let senhaLimpa = senha.replace(/\s+/g, "").toLowerCase();
 
-    if(senha === "euteamo"){
+    if(senhaLimpa === "euteamo"){
         sessionStorage.setItem("autenticado", "true");
 
         document.getElementById("cadeado").classList.add("aberto");
@@ -33,7 +34,25 @@ function mostrarLivro(){
 
 document.querySelectorAll(".entry").forEach(entry => {
     entry.querySelector(".text").textContent = entry.dataset.text;
+
+    entry.addEventListener("click", () => {
+        if(window.innerWidth <= 768){
+            document.getElementById("overlayTimeline").classList.add("show");
+            const modal = document.getElementById("modalTimeline");
+            modal.style.display = "block";
+            setTimeout(() => modal.classList.add("show"), 10);
+            document.getElementById("modalTimelineData").textContent = entry.querySelector(".date").textContent;
+            document.getElementById("modalTimelineTexto").textContent = entry.dataset.text;
+        }
+    });
 });
+
+function fecharTimeline(){
+    document.getElementById("overlayTimeline").classList.remove("show");
+    const modal = document.getElementById("modalTimeline");
+    modal.classList.remove("show");
+    setTimeout(() => modal.style.display = "none", 400);
+}
 
 /* PETALAS */
 const canvas = document.getElementById("petalas");

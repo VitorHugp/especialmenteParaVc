@@ -305,13 +305,8 @@ canvas {
 
 /* Mobile */
 @media (max-width: 768px) {
-    .titulo h1 {
-        font-size: 2.8rem;
-    }
-
-    .subtitulo {
-        font-size: 1.2rem;
-    }
+    .titulo h1 { font-size: 2.5rem; }
+    .subtitulo { font-size: 1.2rem; }
 
     .cards {
         flex-direction: column;
@@ -321,70 +316,63 @@ canvas {
         padding: 40px 20px;
     }
 
-    .card {
-        width: 85%;
-        max-width: 360px;
-    }
+    .card { width: 85%; max-width: 360px; }
 
     .card img {
-        height: 260px;
+        width: 100%;
+        height: 280px !important;
+        object-fit: cover !important;
     }
 
-    /* Modal em coluna no mobile */
+    .modal {
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
     .modal-conteudo {
-        flex-direction: column;
-        width: 90% !important;
+        flex-direction: column !important;
+        width: 90vw !important;
         height: auto !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
+        max-height: 92vh !important;
+        overflow-y: auto !important;
+        transform: scale(1) !important;
     }
 
     .modal-conteudo img {
-        width: 100%;
-        height: 220px;
+        width: 100% !important;
+        height: auto !important;
+        max-height: 55vh !important;
+        object-fit: contain !important;
+        background: #0a0000 !important;
+        flex-shrink: 0 !important;
     }
 
     .modal-texto {
-        width: 100%;
-        padding: 20px;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 20px !important;
+        justify-content: flex-start !important;
+        flex-shrink: 0 !important;
     }
 
     .modal-conteudo h2 {
-        font-size: 1.4rem;
+        font-size: 1.3rem !important;
+        margin: 0 0 10px 0 !important;
     }
 
     .modal-conteudo p {
-        font-size: 1rem;
-        padding: 0 16px 20px 16px;
+        font-size: 0.95rem !important;
+        padding: 0 !important;
+        line-height: 1.5 !important;
     }
 
-    .carta {
-        width: 95%;
-        padding: 0 24px;
-    }
-
-    .carta-texto {
-        font-size: 1.1rem;
-        line-height: 40px;
-    }
+    .carta { width: 95%; padding: 0 20px; }
+    .carta-texto { font-size: 1rem; }
 }
 
-/* Mobile pequeno */
 @media (max-width: 480px) {
-    .titulo h1 {
-        font-size: 2rem;
-    }
-
-    .subtitulo {
-        font-size: 1rem;
-    }
-
-    .card {
-        width: 95%;
-    }
-
-    .carta-texto {
-        font-size: 1rem;
-    }
+    .titulo h1 { font-size: 1.8rem; }
+    .subtitulo { font-size: 1rem; }
+    .card { width: 95%; }
 }

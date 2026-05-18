@@ -1,103 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Programmer Diaries</title>
-    <link rel="stylesheet" href="../assets/capitulo2.css">
+    <link rel="stylesheet" href="../assets/capitulo1.css">
 </head>
-
 <body>
+    <canvas id="canvas"></canvas>
 
-<canvas id="petalas"></canvas>
+    <div class="pagina">
 
-<div class="pagina-container">
-
-    <div class="topo">
-        <h1 class="titulo">The Music Diaries</h1>
-        <p class="subtitulo">músicas que me fazem pensar em você</p>
-
-        <div class="player">
-            <div class="player-info">
-                <span class="player-nota">♪</span>
-                <span class="player-nome">tocando agora...</span>
-            </div>
-            <div class="player-barra">
-                <div class="player-progresso"></div>
-            </div>
+        <div class="titulo">
+            <h1>The Vampire Diaries</h1>
+            <p class="subtitulo">Esse é o meu diário feito especialmente para você...</p>
         </div>
-    </div>
 
-    <div class="citacao-section">
-        <p class="citacao">"A música é o atalho mais curto entre duas almas."</p>
-    </div>
+        <div class="cards">
 
-    <div class="conteudo">
-
-        <div class="discos-grid">
-
-            <div class="disco-card" onclick="abrirModal('modal1')">
-                <div class="disco">
-                    <div class="disco-centro"></div>
-                </div>
-                <div class="disco-info">
-                    <div class="disco-titulo">Starboy</div>
-                    <div class="disco-texto">The Weeknd</div>
-                </div>
+            <div class="card" data-position="center" data-nome="Stefan & Elena" data-frase="Eu vivia como o Stefan, carregando uma eternidade de culpa, era algo que eu já havia aceitado e que viveria assim até o dia em que eu morresse. Mas você foi uma luz no fim do túnel, algo que me fez deixar meu lado estripador no passado e me fez querer retomar minha humanidade." data-img="../src/aaeab589db3d82ce3978d9ee8c9a71b1.jpg">
+                <img src="../src/aaeab589db3d82ce3978d9ee8c9a71b1.jpg" alt="Stefan & Elena">
+                <div class="card-info"><h2>Stefan & Elena</h2></div>
             </div>
 
-            <div class="disco-card" onclick="abrirModal('modal2')">
-                <div class="disco">
-                    <div class="disco-centro"></div>
-                </div>
-                <div class="disco-info">
-                    <div class="disco-titulo">Lover</div>
-                    <div class="disco-texto">Taylor Swift</div>
-                </div>
+            <div class="card" data-position="top" data-nome="Klaus & Caroline" data-frase="Eu vivia como o Klaus, com mais de mil anos de existência, fui um ser temido e poderoso, tive tudo a minha vontade... Até conhecer você. Percebi que não poderia tê-la como bem entendesse, precisaria mudar para algo melhor do que sou hoje, não como um ser sobrenatural, mas como um humano." data-img="../src/8bc960290d0fc2e37c0245216d3d1296.jpg">
+                <img src="../src/8bc960290d0fc2e37c0245216d3d1296.jpg" alt="Klaus & Caroline">
+                <div class="card-info"><h2>Klaus & Caroline</h2></div>
             </div>
 
-            <div class="disco-card" onclick="abrirModal('modal3')">
-                <div class="disco">
-                    <div class="disco-centro"></div>
-                </div>
-                <div class="disco-info">
-                    <div class="disco-titulo">Perfect</div>
-                    <div class="disco-texto">Ed Sheeran</div>
-                </div>
+            <div class="card" data-position="top" data-nome="Elijah & Harley" data-frase="Eu vivia como o Elijah, o mais nobre entre os Originais. Vivi muito tempo transformando pessoas em peões e controlando minhas emoções, palavras e impulsos. Até conhecer você, que quebrou minha armadura aos poucos. Me vi me tornando algo novo que jamais poderia imaginar ser — você me ensinou a amar e a proteger aquilo que me é importante." data-img="../src/7e198089a83400742d4eca5a933eb7bc.jpg">
+                <img src="../src/7e198089a83400742d4eca5a933eb7bc.jpg" alt="Elijah & Hayley">
+                <div class="card-info"><h2>Elijah & Harley</h2></div>
+            </div>
+
+            <div class="card" data-position="center" data-nome="Davina & Kol" data-frase="Eu vivia como o Kol, o Original problemático da família que ninguém levava a sério, vivi sendo uma pessoa em quem ninguém poderia sequer confiar. Mas ao te conhecer, percebi que não estava sozinho nesse mundo. Você enxergou um Kol que ninguém mais enxergaria — não o caos que sempre me acompanhava, mas a pessoa por trás dele, alguém que há muito tempo só queria ser amado e levado a sério." data-img="../src/e252a35f393a559283a7852877ebd807.jpg">
+                <img src="../src/e252a35f393a559283a7852877ebd807.jpg" alt="Davina & Kol">
+                <div class="card-info"><h2>Davina & Koy</h2></div>
             </div>
 
         </div>
 
     </div>
 
-    <div class="modal-overlay" id="overlay" onclick="fecharModal()"></div>
-
-    <div class="modal" id="modal1">
-        <button class="modal-fechar" onclick="fecharModal()">✕</button>
-        <div class="modal-disco"><div class="disco-centro"></div></div>
-        <h2 class="modal-titulo">Starboy</h2>
-        <p class="modal-artista">The Weeknd</p>
-        <p class="modal-texto">Essa música me lembra de você toda vez que toca. Não sei explicar direito, mas é algo que sinto aqui.</p>
+    <div class="modal" id="modal">
+        <div class="modal-conteudo">
+            <button class="modal-fechar" id="modalFechar">✕</button>
+            <img id="modalImg">
+            <div class="modal-texto">
+                <h2 id="modalNome"></h2>
+                <p id="modalFrase"></p>
+            </div>
+        </div>
     </div>
 
-    <div class="modal" id="modal2">
-        <button class="modal-fechar" onclick="fecharModal()">✕</button>
-        <div class="modal-disco"><div class="disco-centro"></div></div>
-        <h2 class="modal-titulo">Lover</h2>
-        <p class="modal-artista">Taylor Swift</p>
-        <p class="modal-texto">Quando ouço essa música penso em tudo que ainda vamos viver juntos.</p>
-    </div>
-
-    <div class="modal" id="modal3">
-        <button class="modal-fechar" onclick="fecharModal()">✕</button>
-        <div class="modal-disco"><div class="disco-centro"></div></div>
-        <h2 class="modal-titulo">Perfect</h2>
-        <p class="modal-artista">Ed Sheeran</p>
-        <p class="modal-texto">Simples assim: essa música é você pra mim.</p>
-    </div>
-
-</div>
-
-<script src="../assets/capitulo2.js"></script>
+    <script src="../assets/capitulo1.js"></script>
 </body>
 </html>

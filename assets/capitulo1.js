@@ -80,13 +80,12 @@ const modalFrase = document.getElementById('modalFrase');
 const modalFechar = document.getElementById('modalFechar');
 const conteudo = document.querySelector('.modal-conteudo');
 
-const isMobile = () => window.innerWidth <= 768;
-
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
         modalImg.src = card.dataset.img;
         modalNome.textContent = card.dataset.nome;
         modalFrase.textContent = card.dataset.frase;
+        modalImg.style.objectPosition = card.dataset.position || "center";
         card.classList.add('selecionado');
         modal.classList.add('aberto');
     });
