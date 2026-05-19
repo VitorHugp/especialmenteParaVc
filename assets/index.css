@@ -349,6 +349,12 @@ button:hover{
 
 .pagina:hover .pagina-desc{ color: #aaa; }
 
+/* ESCONDE MODAL NO DESKTOP */
+.modal-timeline-overlay,
+.modal-timeline{
+    display: none !important;
+}
+
 /* MOBILE */
 @media (max-width: 768px){
     .book-title{ font-size: 2.5rem; }
@@ -368,14 +374,9 @@ button:hover{
 
     .livro-grid{ gap: 20px; }
 
-    .pagina{
-        width: 150px;
-        height: 210px;
-    }
-
+    .pagina{ width: 150px; height: 210px; }
     .pagina-numero{ font-size: 1.8rem; }
 
-    /* MODAL TIMELINE */
     .modal-timeline-overlay{
         display: none;
         position: fixed;
@@ -385,20 +386,20 @@ button:hover{
         backdrop-filter: blur(4px);
     }
 
-    .modal-timeline-overlay.show{ display: block; }
+    .modal-timeline-overlay.show{ display: block !important; }
 
     .modal-timeline{
         display: none;
         position: fixed;
-        top: 50% !important;
-        left: 50% !important;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%) scale(0.8);
         z-index: 101;
-        width: 78vw !important;
-        max-height: 80vh !important;
-        overflow-y: auto !important;
-        box-sizing: border-box !important;
-        padding: 40px 20px 20px !important;
+        width: 78vw;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 40px 20px 20px;
         background: linear-gradient(160deg, #1a0000, #0a0000);
         border: 1px solid #5b0000;
         border-radius: 16px;
@@ -437,9 +438,9 @@ button:hover{
     }
 
     .modal-timeline-texto{
-        font-size: 0.85rem !important;
-        line-height: 1.7 !important;
-        word-break: break-word !important;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        word-break: break-word;
     }
 }
 
